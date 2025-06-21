@@ -23,7 +23,7 @@ const Signup = () => {
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:5000/api/auth/signup', formData);
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/signup`, formData);
             if (authContext) {
                 authContext.login(res.data.token);
             }

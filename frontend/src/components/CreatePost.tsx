@@ -26,14 +26,14 @@ const CreatePost = ({ onPostCreated }: CreatePostProps) => {
         }
 
         try {
-            await axios.post('http://localhost:5000/api/posts', formData, {
+            await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/posts`, formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
+                    'Content-Type': 'multipart/form-data'
+                }
             });
             setContent('');
             setFile(null);
-            onPostCreated();
+            if(onPostCreated) onPostCreated();
         } catch (err) {
             console.error(err);
         }

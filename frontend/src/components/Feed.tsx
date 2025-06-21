@@ -26,7 +26,7 @@ const Feed = ({ refresh }: FeedProps) => {
 
     const handleLike = async (postId: string) => {
         try {
-            const res = await axios.post(`http://localhost:5000/api/posts/like/${postId}`);
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/posts/like/${postId}`);
             setPosts(posts.map(post =>
                 post._id === postId ? { ...post, likes: res.data } : post
             ));
@@ -38,7 +38,7 @@ const Feed = ({ refresh }: FeedProps) => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/posts');
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/posts`);
                 setPosts(res.data);
                 setLoading(false);
             } catch (err) {
@@ -66,7 +66,7 @@ const Feed = ({ refresh }: FeedProps) => {
                     <div key={post._id} className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                         <div className="flex items-center mb-4">
                             <Image
-                                src={post.author.profilePicture ? `http://localhost:5000/${post.author.profilePicture}` : '/default-avatar.png'}
+                                src={post.author.profilePicture ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/${post.author.profilePicture}` : '/default-avatar.png'}
                                 alt={post.author.name}
                                 width={48}
                                 height={48}
@@ -81,15 +81,15 @@ const Feed = ({ refresh }: FeedProps) => {
                         </div>
                         <p className="text-gray-800 mb-4">{post.content}</p>
                         {post.image && (
-                            <div className="mb-4">
-                                <Image
-                                    src={`http://localhost:5000/${post.image}`}
-                                    alt="Post"
-                                    width={500}
-                                    height={500}
-                                    className="rounded-lg max-w-full h-auto"
-                                />
-                            </div>
+                        <div className="mb-4">
+                            <Image
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${post.image}`}
+                                alt="Post"
+                                width={500}
+                                height={500}
+                                className="rounded-lg max-w-full h-auto"
+                            />
+                        </div>
                         )}
                         <div className="flex items-center">
                             <button

@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const loadUser = async (token: string) => {
         setAuthToken(token);
         try {
-            const res = await axios.get('http://localhost:5000/api/auth/me');
+            const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/me`);
             setUser(res.data);
             setIsAuthenticated(true);
             setToken(token);

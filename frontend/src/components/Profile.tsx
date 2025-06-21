@@ -61,9 +61,10 @@ const Profile = () => {
         }
 
         try {
-            await axios.put(`http://localhost:5000/api/users/${authContext.user?._id}`, body, {
+            await axios.put(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/${authContext.user?._id}`, body, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
             });
             alert('Profile Updated!');
@@ -78,13 +79,14 @@ const Profile = () => {
         <div className="max-w-2xl mx-auto mt-10 p-8 bg-white rounded-lg shadow-md">
             <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Your Profile</h1>
             <div className="flex flex-col items-center mb-6">
-                <Image
-                    src={authContext.user.profilePicture ? `http://localhost:5000/${authContext.user.profilePicture}` : '/default-avatar.png'}
-                    alt="Profile"
-                    width={128}
-                    height={128}
-                    className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-gray-200"
-                />
+                <div className="relative w-32 h-32">
+                    <Image
+                        src={authContext.user.profilePicture ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/${authContext.user.profilePicture}` : '/default-avatar.png'}
+                        alt="Profile"
+                        layout="fill"
+                        className="rounded-full mx-auto mb-4 object-cover border-4 border-gray-200"
+                    />
+                </div>
             </div>
             <form onSubmit={onSubmit} className="space-y-6">
                 <div>
