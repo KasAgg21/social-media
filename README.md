@@ -1,36 +1,33 @@
-# Social Media App
+# Social Media Platform
 
-This is a simplified social media platform built with the MERN stack (MongoDB, Express, React/Next.js, Node.js).
+This project is a simplified social media platform built using the MERN stack (MongoDB, Express, React/Next.js, Node.js), allowing users to sign up, create profiles, make posts, and interact with posts from other users.
 
 ## Key Features
 
-*   **User Authentication**: Secure signup and login functionality.
-*   **User Profiles**: Users can create and update their profiles with a name, bio, and profile picture.
-*   **Post Creation and Feed**: Users can create text-based posts and view a global feed of all posts.
-*   **Post Reactions (Likes)**: Users can like a post multiple times.
+*   **User Authentication**: Secure user signup and login functionality.
+*   **User Profiles**: Users can create and update their profiles, which include a name, a short bio, and a profile picture.
+*   **Profile Avatar Uploads**: Users can upload custom profile pictures.
+*   **Post Creation and Feed**: Authenticated users can create text-based posts and posts with images. All posts are displayed in a global feed visible to every user.
+*   **Post Reactions (Likes)**: Users can like any post multiple times. The system tracks and displays the total number of likes for each post.
 
 ## Technologies Used
 
-*   **Frontend**: 
-    *   Next.js
-    *   React.js
-    *   Tailwind CSS
-    *   Axios
-    *   React Context API
+*   **Frontend**:
+    *   Next.js / React.js
+    *   Tailwind CSS for styling
+    *   Axios for API requests
 *   **Backend**:
-    *   Node.js
-    *   Express.js
-    *   MongoDB
-    *   Mongoose
-    *   JSON Web Tokens (JWT) for authentication
-    *   bcryptjs for password hashing
+    *   Node.js with Express.js
+    *   MongoDB with Mongoose for database management
+    *   JSON Web Tokens (JWT) for secure authentication
+    *   `bcryptjs` for password hashing
 
 ## Project Setup
 
 ### Prerequisites
 
-*   Node.js and npm installed
-*   MongoDB Atlas account and a connection string
+*   Node.js and npm (or yarn) installed on your machine.
+*   A MongoDB Atlas account and your connection string.
 
 ### Installation
 
@@ -40,27 +37,24 @@ This is a simplified social media platform built with the MERN stack (MongoDB, E
     cd <repository-directory>
     ```
 
-2.  **Install backend dependencies:**
+2.  **Set up the backend:**
     ```bash
     cd backend
     npm install
     ```
+    Create a `.env` file in the `backend` directory and add the following environment variables:
+    ```
+    MONGODB_URI=<your_mongodb_connection_string>
+    JWT_SECRET=<your_jwt_secret>
+    PORT=5000
+    ```
+    Replace the placeholder values with your actual MongoDB connection string and a secret key for JWT.
 
-3.  **Install frontend dependencies:**
+3.  **Set up the frontend:**
     ```bash
     cd ../frontend
     npm install
     ```
-
-4.  **Set up environment variables:**
-    *   In the `backend` directory, create a `.env` file and add the following:
-        ```
-        MONGODB_URI=<your_mongodb_connection_string>
-        PORT=5000
-        JWT_SECRET=<your_jwt_secret>
-        ```
-    *   Replace `<your_mongodb_connection_string>` with your actual MongoDB connection string.
-    *   Replace `<your_jwt_secret>` with a long, random string.
 
 ### Running the Application
 
@@ -69,19 +63,9 @@ This is a simplified social media platform built with the MERN stack (MongoDB, E
     cd backend
     npm start
     ```
-    The server will start on port 5000.
 
 2.  **Start the frontend development server:**
     ```bash
     cd ../frontend
     npm run dev
     ```
-    The application will be available at `http://localhost:3000`.
-
-## Known Issues/Limitations
-
-*   The frontend has some persistent linter errors related to imports that need to be resolved.
-*   No real-time updates for new posts or likes; a manual refresh is required.
-*   Image uploads are not supported; profile pictures are URLs.
-*   No error handling on the frontend for failed API requests.
-*   The application is not yet deployed. 
