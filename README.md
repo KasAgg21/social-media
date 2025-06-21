@@ -11,7 +11,7 @@ This is a simplified social media platform built with the MERN stack (MongoDB, E
 
 ## Technologies Used
 
-*   **Frontend**:
+*   **Frontend**: 
     *   Next.js
     *   React.js
     *   Tailwind CSS
