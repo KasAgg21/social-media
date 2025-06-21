@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Image from 'next/image';
 
 interface Post {
     _id: string;
@@ -64,9 +65,11 @@ const Feed = ({ refresh }: FeedProps) => {
                 {posts.map((post) => (
                     <div key={post._id} className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                         <div className="flex items-center mb-4">
-                            <img
+                            <Image
                                 src={post.author.profilePicture ? `http://localhost:5000/${post.author.profilePicture}` : '/default-avatar.png'}
                                 alt={post.author.name}
+                                width={48}
+                                height={48}
                                 className="w-12 h-12 rounded-full mr-4 object-cover"
                             />
                             <div>
@@ -79,9 +82,11 @@ const Feed = ({ refresh }: FeedProps) => {
                         <p className="text-gray-800 mb-4">{post.content}</p>
                         {post.image && (
                             <div className="mb-4">
-                                <img
+                                <Image
                                     src={`http://localhost:5000/${post.image}`}
                                     alt="Post"
+                                    width={500}
+                                    height={500}
                                     className="rounded-lg max-w-full h-auto"
                                 />
                             </div>

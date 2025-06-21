@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             setUser(res.data);
             setIsAuthenticated(true);
             setToken(token);
-        } catch (err) {
+        } catch {
             localStorage.removeItem('token');
             setAuthToken(null);
             setToken(null);
